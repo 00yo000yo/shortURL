@@ -1,66 +1,89 @@
 <div class="container">
-    <div class="position-absolute top-50 start-50 translate-middle">
+  <div class="position-absolute top-50 start-50 translate-middle">
 
-        {{!-- 上方名言 --}}
+    {{! 上方名言 }}
 
-        <div class="row justify-content-center mb-5">
-            
-            <figure class="text-center">
-                <blockquote class="blockquote">
-                    <p>這是你ㄉ網址，請抱持感恩的心按下複製</p>
-                </blockquote>
-                <figcaption class="blockquote-footer">
-                    <cite title="Source Title">做這個網頁的人說ㄉ</cite>
-                </figcaption>
-            </figure>
-        </div>
+    <div class="row justify-content-center mb-5">
 
-        {{!-- 中間連結圖 --}}
+      <figure class="text-center">
+        <blockquote class="blockquote">
+          <p>這是你ㄉ網址，請抱持感恩的心按下複製</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          <cite title="Source Title">做這個網頁的人說ㄉ</cite>
+        </figcaption>
+      </figure>
+    </div>
 
-        <div class="row justify-content-center mb-5">
-            <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" class=" w-50" alt="...">
-        </div>
+    {{! 中間連結圖 }}
 
-        {{!-- 下方表單 --}}
+    <div class="row justify-content-center mb-5">
+      <img
+        src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png"
+        style="width:300px;"
+      />
+    </div>
 
+    {{! 下方表單 }}
 
     {{#if data}}
-        <div class="row justify-content-center">
+      <div class="row justify-content-center">
 
-                <div class="mb-3">             
-                    <p id="copy">http://localhost:3000/{{data}}</p>
-                </div>
-
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button type="button" onclick="copyEvent('copy')" class="btn btn-outline-primary ">按我就可以複製囉^.<</button>
-                </div>
+        <div class="mb-3">
+          <p id="copy">http://localhost:3000/{{data}}</p>
         </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button
+            type="button"
+            onclick="copyEvent('copy')"
+            class="btn btn-outline-primary"
+          >按我就可以複製囉^.</button>
+        </div>
+      </div>
 
     {{else if originalUrl}}
 
-         <div class="row justify-content-center">
+      <div class="row justify-content-center">
 
-                <div class="mb-3">             
-                    <p id="copy">{{originalUrl.url}}</p>
-                </div>
-
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button type="button" onclick="copyEvent('copy')" class="btn btn-outline-primary ">按我就可以複製囉^.<</button>
-                </div>
+        <div class="mb-3">
+          <p id="copy">{{originalUrl.url}}</p>
         </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button
+            type="button"
+            onclick="copyEvent('copy')"
+            class="btn btn-outline-primary"
+          >按我就可以複製囉^.</button>
+        </div>
+      </div>
+
+    {{else}}
+
+      <div class="row justify-content-center">
+
+        <div class="mb-3 text-center">
+          <p>你要不要確定一下網址呢?</p>
+        </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto invisible">
+          <button
+            type="button"
+            onclick="copyEvent('copy')"
+            class="btn btn-outline-primary"
+          >按我就可以複製囉^.</button>
+        </div>
+      </div>
 
     {{/if}}
 
-    </div>
+  </div>
 </div>
 
-{{!-- 一鍵複製指愣 --}}
+{{! 一鍵複製指愣 }}
 
 <script>
-    function copyEvent(id)
-    {
-        str = document.getElementById(id);
-        window.getSelection().selectAllChildren(str);
-        document.execCommand("Copy")
-    }
+  function copyEvent(id) { str = document.getElementById(id);
+  window.getSelection().selectAllChildren(str); document.execCommand("Copy") }
 </script>
